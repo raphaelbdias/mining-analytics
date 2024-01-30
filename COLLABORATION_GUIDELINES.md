@@ -14,9 +14,16 @@ Welcome to the Mining Analytics Hub Prototype project! We appreciate your collab
     git clone https://github.com/your-username/mining-analytics-hub.git
     ```
 
-2. **Create a New Branch:**
+2. **Create and Activate a Virtual Environment:**
     ```bash
-    git checkout -b feature/your-feature-name
+    # Navigate to the project directory
+    cd mining-analytics-hub
+
+    # Create a virtual environment
+    python3 -m venv venv
+
+    # Activate the virtual environment
+    source venv/bin/activate
     ```
 
 3. **Install Dependencies:**
