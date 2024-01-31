@@ -7,6 +7,6 @@ def home():
     # Display key metrics on the home/summary page
     return render_template('home.html', metrics={})
 
-
+# run the file
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
