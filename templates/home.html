@@ -2,29 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mining Analytics Hub</title>
-    <!-- Add any additional CSS or styling links here -->
+    <title>Mining Analytics Dashboard</title>
 </head>
 <body>
 
-    <header>
-        <h1>Mining Analytics Hub</h1>
-    </header>
+<h1>Mining Analytics Dashboard</h1>
 
-    <nav>
-        <!-- Add navigation links if needed -->
-    </nav>
+<h2>Personnel Data</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Employee ID</th>
+        <th>Name</th>
+        <th>Position</th>
+        <!-- Add more columns based on your Personnel model -->
+    </tr>
+    {% for person in personnel_data %}
+    <tr>
+        <td>{{ person.id }}</td>
+        <td>{{ person.employee_id }}</td>
+        <td>{{ person.name }}</td>
+        <td>{{ person.position }}</td>
+        <!-- Add more cells based on your Personnel model -->
+    </tr>
+    {% endfor %}
+</table>
 
-    <main>
-    </main>
-
-    <footer>
-        <!-- Add footer content if needed -->
-    </footer>
-
-    <!-- Add any additional scripts or JS links here -->
+<!-- Repeat the above structure for other tables (Equipment, Vehicles, Materials, MineSections) -->
 
 </body>
 </html>
