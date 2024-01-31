@@ -2,17 +2,18 @@ from flask import Flask, render_template
 from models import Personnel, Equipment, Vehicles, Materials, MineSections, db
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/site.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db.init_app(app)
 
-@app.route('/')
-def home():
-    # Fetch some data from models
+with app.app_context():
     personnel_data = Personnel.query.all()
     equipment_data = Equipment.query.all()
     vehicles_data = Vehicles.query.all()
     materials_data = Materials.query.all()
     mine_sections_data = MineSections.query.all()
+
+@app.route('/')
+def home():
 
     # Pass the data to the template
     return render_template('home.html',
