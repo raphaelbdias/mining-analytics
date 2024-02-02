@@ -14,6 +14,7 @@ with app.app_context():
 
 @app.route('/')
 def home():
+    
 
     # Pass the data to the template
     return render_template('home.html',

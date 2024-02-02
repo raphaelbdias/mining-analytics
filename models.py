@@ -1,10 +1,13 @@
-# models.py
-
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
 class Personnel(db.Model):
+    """Defines the table to conatin information about staff and workers
+
+    Args:
+        db (_type_): _description_
+    """
     id = db.Column(db.Integer, primary_key=True)
     employee_id = db.Column(db.String(20), unique=True, nullable=False)
     name = db.Column(db.String(100), nullable=False)
@@ -22,6 +25,11 @@ class Personnel(db.Model):
     vehicle = db.relationship('Vehicles', back_populates='personnel')
 
 class Equipment(db.Model):
+    """Defines the table to conatin information about equipment
+
+    Args:
+        db (_type_): _description_
+    """
     id = db.Column(db.Integer, primary_key=True)
     equipment_id = db.Column(db.String(20), unique=True, nullable=False)
     type_of_systems = db.Column(db.String(100))
