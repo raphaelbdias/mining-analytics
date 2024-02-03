@@ -13,6 +13,12 @@ with app.app_context():
     mine_sections_data = MineSections.query.all()
 
 @app.route('/')
+def index():
+    
+    # Pass the data to the template
+    return render_template('index.html')
+
+@app.route('/home')
 def home():
     
 
