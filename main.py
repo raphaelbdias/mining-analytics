@@ -41,10 +41,14 @@ def vehicles():
 
 @app.route('/equipment')
 def equipment():
-    data = []
-    for equipment in equipment_data:
-        data.append({"Equipment": {equipment.equipment_id}, "Status": {equipment.status}})
 
+    data = []
+    for equipment in Equipment.query.all():
+        dictionary = {"Equipment": equipment.equipment_id, "Status": equipment.status, "personnel":"", "system": equipment.type_of_systems, "usage_statistics":equipment.usage_statistics}
+        for i in equipment.personnel:
+            dictionary.update({"personnel":i.name})  
+        data.append(dictionary)
+        
     # Pass the data to the template
     return render_template('equipment.html',
                             data=data)
