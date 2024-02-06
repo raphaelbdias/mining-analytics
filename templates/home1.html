@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining Analytics Dashboard</title>
+</head>
+<body>
+
+<h1>Mining Analytics Dashboard</h1>
+
+<h2>Personnel Data</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Employee ID</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Shift</th>
+        <th>Productivity</th>
+        <th>Equipment ID</th>
+        <th>Vehicle ID</th>
+        <!-- Add more columns based on your Personnel model -->
+    </tr>
+    {% for person in personnel_data %}
+    <tr>
+        <td>{{ person.id }}</td>
+        <td>{{ person.employee_id }}</td>
+        <td>{{ person.name }}</td>
+        <td>{{ person.position }}</td>
+        <td>{{ person.shift }}</td>
+        <td>{{ person.productivity_metrics }}</td>
+        <td>{{ person.equipment_id }}</td>
+        <td>{{ person.vehicle_id }}</td>
+        <!-- Add more cells based on your Personnel model -->
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- Repeat the above structure for other tables (Equipment, Vehicles, Materials, MineSections) -->
+
+</body>
+</html>

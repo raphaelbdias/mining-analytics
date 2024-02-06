@@ -107,7 +107,7 @@ input, select, textarea {
 		font-size: 19pt;
 		font-weight: 300;
 		line-height: 1.75em;
-		color: #888;
+		color: #000000;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -1913,26 +1913,26 @@ input, select, textarea {
 
 		table tbody tr:nth-child(2n+2) {
 			background: #f4f4f4;
+			color: #000;
 		}
 
 		table td {
-			padding: 0.5em 1em 0.5em 1em;
+			padding: 0.4em 1em 0.4em 1em;
 		}
 
 		table th {
 			text-align: left;
-			padding: 0.5em 1em 0.5em 1em;
+			padding: 0.5em 0.5em 0.5em 0.5em;
 			color: #fff;
 			background: #222729 url("images/overlay.png");
 		}
 
 		table thead {
-			background: #444;
-			color: #fff;
+			color: #000;
 		}
 
 		table tfoot {
-			background: #eee;
+			background: #000;
 		}
 
 /* Button */
@@ -2247,8 +2247,7 @@ input, select, textarea {
 			}
 
 			#main > section.one {
-				background-color: #81918E;
-				background-image: url("../../images/banner.jpg");
+				background-color: #ffffff;
 			}
 
 			#main > section.two {
@@ -2509,7 +2508,7 @@ input, select, textarea {
 					#headerToggle .toggle:before {
 						text-decoration: none;
 						content: '\f0c9';
-						color: #fff;
+						color: #000000;
 						font-size: 18px;
 						background: rgba(128, 136, 144, 0.5);
 						border-radius: 0.35em;
