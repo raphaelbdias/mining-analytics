@@ -41,10 +41,13 @@ def vehicles():
 
 @app.route('/equipment')
 def equipment():
-    
+    data = []
+    for equipment in equipment_data:
+        data.append({"Equipment": {equipment.equipment_id}, "Status": {equipment.status}})
+
     # Pass the data to the template
     return render_template('equipment.html',
-                            equipment_data=equipment_data)
+                            data=data)
 
 @app.route('/mine')
 def mine():
