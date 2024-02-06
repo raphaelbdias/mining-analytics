@@ -10,6 +10,10 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="static/assets/css/main.css" />
+		<title>Equipment Usage Statistics</title>
+		<!-- Include Plotly.js -->
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	
 	</head>
 	<body class="is-preload">
 
@@ -55,11 +59,39 @@
 			</div>
 
 		<!-- Main -->
+		
 			<div id="main">
+				<h1>Equipment Information</h1>
+
+					<table border="1">
+						<thead>
+							<tr>
+								<th>Equipment ID</th>
+								<th>Status</th>
+								<th>Assigned Personnel</th>
+								<th>Type of Systems</th>
+								<th>Usage Statistics</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for entry in data %}
+								<tr>
+									<td>{{ entry['Equipment'] }}</td>
+									<td>{{ entry['Status'] }}</td>
+									<td>{{ entry['personnel'] }}</td>
+									<td>{{ entry['system'] }}</td>
+									<td>{{ entry['usage_statistics'] }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+
 
 				<!-- Intro -->
+				<h1>Equipment Usage Statistics</h1>
 					<section id="top" class="one dark cover">
 						<div class="container">
+						
 
 							<!-- <header>
 								<h2 class="alt">Hi! I'm <strong>Prologue</strong>, a <a href="http://html5up.net/license">free</a> responsive<br />
@@ -67,19 +99,22 @@
 								<p>Ligula scelerisque justo sem accumsan diam quis<br />
 								vitae natoque dictum sollicitudin elementum.</p>
 							</header> -->
+							<!-- Plotly chart container -->
+							<div id="equipment-chart"></div>
 
-				{{ data }}
+							<!-- Script to render the Plotly chart -->
+							<script>
+								// Parse the JSON data passed from Flask
+								var jsonData = {{ graphJSON|tojson|safe }};
+
+								// Use Plotly to render the chart in the specified container
+								Plotly.newPlot('equipment-chart', JSON.parse(jsonData));
+							</script>
+
+
 
 
 		<!-- Footer -->
-			<div id="footer">
-
-				<!-- Copyright -->
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-
-			</div>
 
 		<!-- Scripts -->
 			<script src="static/assets/js/jquery.min.js"></script>
