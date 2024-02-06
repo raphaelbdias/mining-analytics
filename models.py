@@ -39,7 +39,6 @@ class Equipment(db.Model):
     overhaul_history = db.Column(db.String(100))
 
     # Relationship with Personnel
-    personnel_id = db.Column(db.Integer, db.ForeignKey('personnel.id'))
     personnel = db.relationship('Personnel', back_populates='equipment')
 
     # Relationship with Materials
