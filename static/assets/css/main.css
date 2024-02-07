@@ -2120,7 +2120,7 @@ header {
 
 	#logo {
 		position: relative;
-		margin: 1.75em 1.5em 1.5em 1.5em;
+		margin: 0.8em 1em 1em 1em;
 		min-height: 48px;
 		cursor: default;
 	}
