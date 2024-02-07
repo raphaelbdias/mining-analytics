@@ -65,11 +65,13 @@ def equipment():
         go.Bar(x=[entry['Equipment'] for entry in data],
                y=[entry['usage_statistics'] for entry in data],
                text=[entry['system'] for entry in data],
-               marker=dict(color='#305D7D')
+               marker=dict(color='#305D7D'),
+               
         )
     ])
 
     # Update layout for better visualization
+ 
     fig.update_layout(
         font_family="Source Sans Pro",
         title='Equipment Usage Statistics',
@@ -77,6 +79,8 @@ def equipment():
         yaxis_title='Usage Statistics',
         barmode='group'
     )
+
+
 
     # Convert the figure to JSON for rendering in HTML
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
