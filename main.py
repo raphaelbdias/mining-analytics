@@ -74,11 +74,30 @@ def equipment():
  
     fig.update_layout(
         font_family="Source Sans Pro",
+        font_color="#000",
         title='Equipment Usage Statistics',
         xaxis_title='Equipment',
         yaxis_title='Usage Statistics',
-        barmode='group'
+        barmode='group',
+        width=500,
+        height=400,
+        dragmode=False,
+        hoverlabel_font_family="Source Sans Pro",
+        paper_bgcolor="#fff",
+        plot_bgcolor="#fff"
+
     )
+    fig.update_xaxes(showline=True,
+                    color="#000",
+                    linewidth=1,
+                    linecolor='black',
+                    mirror=True)
+
+    fig.update_yaxes(showline=True,
+                    linewidth=1,
+                    linecolor='black',
+                    mirror=True)
+
 
 
 
