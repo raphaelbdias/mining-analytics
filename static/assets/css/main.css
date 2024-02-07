@@ -71,7 +71,18 @@ input, select, textarea {
 	-ms-appearance: none;
 	appearance: none;
 }
-
+/* Header styles */
+header {
+    background-color: #0E4C92;
+    font-family: 'Source Sans Pro', sans-serif;
+	color: #fff !important;
+    font-size: 20pt;
+    font-weight: bold;
+    padding: 10px;
+    margin-right: 1000px; /* Adjusted value */
+    margin-top: 20px; /* Adjusted value */
+    text-align: center;
+}
 /* Basic */
 
 	html {
@@ -83,7 +94,7 @@ input, select, textarea {
 	}
 
 	body {
-		background: #fff;
+		background: #fff ;
 		font-family: 'Source Sans Pro', sans-serif;
 		font-size: 19pt;
 		font-weight: 300;
@@ -144,6 +155,8 @@ input, select, textarea {
 
 	header {
 		margin: 0 0 2em 0;
+		color:#000;
+		font: #000;
 	}
 
 		header > p {
@@ -1907,25 +1920,31 @@ input, select, textarea {
 /* Table */
 
 	table {
-		width: 100%;
+		width: 50%;
 		text-align: left;
+		font-size: 0.7em;
+		border-collapse:collapse;
+		border:1px solid #000;
 	}
 
 		table tbody tr:nth-child(2n+2) {
-			background: #f4f4f4;
+			background: #fff;
 			color: #000;
 		}
 
 		table td {
 			padding: 0.4em 1em 0.4em 1em;
 			color: #000;
+			border:1.7px solid #000;
 		}
 
 		table th {
 			text-align: left;
 			padding: 0.5em 0.5em 0.5em 0.5em;
 			color: #fff;
-			background: #222729 url("images/overlay.png");
+			background: #0E4C92 url("images/overlay.png");
+			font-weight: bold;
+			border:1.7px solid #000
 		}
 
 		table thead {
@@ -1934,6 +1953,10 @@ input, select, textarea {
 
 		table tfoot {
 			background: #000;
+		}
+		
+		table tr {
+			background: #fff;
 		}
 
 /* Button */
@@ -2146,6 +2169,7 @@ input, select, textarea {
 				-webkit-transition: none;
 				-ms-transition: none;
 				transition: none;
+				z-index: 0; 
 			}
 
 				#nav ul li a span {
