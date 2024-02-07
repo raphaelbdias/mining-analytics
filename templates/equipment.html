@@ -43,10 +43,10 @@
 
 				</div>
 
-				<div class="bottom">
+				<!-- <div class="bottom"> -->
 
 					<!-- Social Icons -->
-						<ul class="icons">
+						<!-- <ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 							<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
@@ -54,7 +54,7 @@
 							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 						</ul>
 
-				</div>
+				</div> -->
 
 			</div>
 
@@ -85,34 +85,39 @@
 							{% endfor %}
 						</tbody>
 					</table>
-
+			</div>		
+			<div id="main">	
 
 				<!-- Intro -->
 				<h1>Equipment Usage Statistics</h1>
 					<section id="top" class="one dark cover">
 						<div class="container">
 						
-
-							<!-- <header>
-								<h2 class="alt">Hi! I'm <strong>Prologue</strong>, a <a href="http://html5up.net/license">free</a> responsive<br />
-								site template designed by <a href="http://html5up.net">HTML5 UP</a>.</h2>
-								<p>Ligula scelerisque justo sem accumsan diam quis<br />
-								vitae natoque dictum sollicitudin elementum.</p>
-							</header> -->
 							<!-- Plotly chart container -->
-							<div id="equipment-chart"></div>
+							<div id="equipment-chart">
 
-								<!-- Script to render the Plotly chart -->
+								<style>
+									.modebar-container {
+										display: none !important;
+									}
+								</style>
+								
 								<script>
 									// Parse the JSON data passed from Flask
 									var jsonData = {{ graphJSON|tojson|safe }};
-
+								
 									// Use Plotly to render the chart in the specified container
-									Plotly.newPlot('equipment-chart', JSON.parse(jsonData));
-
-									// Disable the display of the modebar for 'equipment-chart'
-									Plotly.update('equipment-chart', { 'config.displaylogo': False });
+									var equipmentChart = Plotly.newPlot('equipment-chart', JSON.parse(jsonData));
+								
+									// Hide the mode bar container after the plot has been rendered
+									equipmentChart.then(function() {
+										document.querySelector('.modebar-container').style.display = 'none';
+									}).catch(function(error) {
+										console.error('Error rendering Plotly chart:', error);
+									});
 								</script>
+							</div>
+			</div>	
 
 
 
