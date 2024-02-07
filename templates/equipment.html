@@ -102,14 +102,17 @@
 							<!-- Plotly chart container -->
 							<div id="equipment-chart"></div>
 
-							<!-- Script to render the Plotly chart -->
-							<script>
-								// Parse the JSON data passed from Flask
-								var jsonData = {{ graphJSON|tojson|safe }};
+								<!-- Script to render the Plotly chart -->
+								<script>
+									// Parse the JSON data passed from Flask
+									var jsonData = {{ graphJSON|tojson|safe }};
 
-								// Use Plotly to render the chart in the specified container
-								Plotly.newPlot('equipment-chart', JSON.parse(jsonData));
-							</script>
+									// Use Plotly to render the chart in the specified container
+									Plotly.newPlot('equipment-chart', JSON.parse(jsonData));
+
+									// Disable the display of the modebar for 'equipment-chart'
+									Plotly.update('equipment-chart', { 'config.displaylogo': False });
+								</script>
 
 
 
