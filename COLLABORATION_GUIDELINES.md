@@ -28,6 +28,7 @@ Welcome to the Mining Analytics Hub Prototype project! We appreciate your collab
 
 3. **Install Dependencies:**
     ```bash
+    # if you plan to code locally and want to work in your local environment
     pip install -r requirements.txt
     ```
 
