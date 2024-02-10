@@ -30,8 +30,47 @@ with app.app_context():
             
     data = []
     for vehicles in Vehicles.query.all():
-        dictionary = {"vehicles": vehicles.vehicle_type, "Fuel": vehicles.fuel_consumption, "material":"", "maintenance_history": vehicles.maintenance_history, "distance_traveled":vehicles.distance_traveled}
+        dictionary = {"vehicles": vehicles.vehicle_type, 
+                      "Fuel": vehicles.fuel_consumption, 
+                      "material":"", 
+                      "maintenance_history": vehicles.maintenance_history, 
+                      "distance_traveled":vehicles.distance_traveled, 
+                      "mine_section":vehicles.mine_section.section_name,
+                      "coordinates":[vehicles.mine_section.latitude, vehicles.mine_section.longitude]}
         for i in vehicles.personnel:
             dictionary.update({"personnel":i.name})  
         data.append(dictionary)
     print(data)
+
+    # data = []
+    # for vehicle in Vehicles.query.all():
+    #     dictionary = {
+    #         "vehicles": vehicle.vehicle_type,
+    #         "Fuel": vehicle.fuel_consumption,
+    #         "material": "",
+    #         "maintenance_history": vehicle.maintenance_history,
+    #         "distance_traveled": vehicle.distance_traveled,
+    #     }
+        
+    #     # Add mine section coordinates
+    #     if vehicle.materials:
+    #         mine_section = vehicle.materials.mine_section
+    #         if mine_section:
+    #             dictionary.update({
+    #                 "latitude": mine_section.latitude,
+    #                 "longitude": mine_section.longitude,
+    #             })
+
+    #     # Add personnel names
+    #     personnel_names = [person.name for person in vehicle.personnel]
+    #     dictionary.update({"personnel": personnel_names})
+        
+    #     data.append(dictionary)
+
+    # print(data)
+
+# UPDATE vehicles  set mine_section_id=1  WHERE id = 1;
+# UPDATE vehicles  set mine_section_id=2  WHERE id = 2;
+# UPDATE vehicles  set mine_section_id=3  WHERE id = 3;
+# UPDATE vehicles  set mine_section_id=4  WHERE id = 4;
+# UPDATE vehicles  set mine_section_id=5  WHERE id = 5;

@@ -94,7 +94,7 @@ header {
 	}
 
 	body {
-		background: #fff ;
+		background: #eaf8ff ;
 		font-family: 'Source Sans Pro', sans-serif;
 		font-size: 19pt;
 		font-weight: 300;
@@ -1936,6 +1936,7 @@ header {
 			padding: 0.4em 1em 0.4em 1em;
 			color: #000;
 			border:1.7px solid #000;
+			font-weight: bold;
 		}
 
 		table th {

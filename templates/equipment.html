@@ -67,37 +67,63 @@
 			</div>
 
 		<!-- Main -->
-		<div style="width: 100%;">
-			<div id="main" style="width: 50%; height: 100px; float: left;">
-					<table border="1">
-						<thead>
+		<div style="width: 100%; margin-left: 20%;">
+				<table border="1">
+					<thead>
 
+						<tr>
+							<th>Equipment ID</th>
+							<th>Status</th>
+							<th>Assigned Personnel</th>
+							<th>Mine Section</th>
+							<th>Type of Systems</th>
+							<th>Usage Statistics</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for entry in data %}
 							<tr>
-								<th>Equipment ID</th>
-								<th>Status</th>
-								<th>Assigned Personnel</th>
-								<th>Type of Systems</th>
-								<th>Usage Statistics</th>
+								<td>{{ entry['Equipment'] }}</td>
+								<td style="color: {% if entry['Status'] == 'Operational' %}#32cd32{% else %}#fff000{% endif %}">{{ entry['Status'] }}</td>
+								<td>{{ entry['personnel'] }}</td>
+								<td>{{ entry['mine_section'] }}</td>
+								<td>{{ entry['system'] }}</td>
+								<td>{{ entry['usage_statistics'] }}</td>
 							</tr>
-						</thead>
-						<tbody>
-							{% for entry in data %}
-								<tr>
-									<td>{{ entry['Equipment'] }}</td>
-									<td>{{ entry['Status'] }}</td>
-									<td>{{ entry['personnel'] }}</td>
-									<td>{{ entry['system'] }}</td>
-									<td>{{ entry['usage_statistics'] }}</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
+						{% endfor %}
+					</tbody>
+				</table>
+
+				<div id="myPlot"></div>
+
+
+		</div>
+		<script>
+			// Load the Plotly figure from JSON
+			var figure = {graphJSON_2};
+	
+			// Plot the figure in the 'myPlot' div
+			Plotly.newPlot('myPlot', figure);
+		</script>
+		<div style="width: 100%;">
+			<div id="main" style="width: 60%; height: 100px; float: left; margin-left: 20%;">
+
+				<!-- Donut Chart Section -->
+				<div id="statusDonutChart"></div>
+
+				<!-- JavaScript to render the Plotly chart -->
+				<script>
+					// Parse the JSON data for the donut chart
+					var donutChartData = {{ graphJSON_1 | safe }};
+
+					// Render the donut chart
+					Plotly.newPlot('statusDonutChart', donutChartData, {responsive: true});
+				</script>
+
 			</div>		
 			
-			<div id="main" style="margin-left: 50%; height: 100px;">	
-
+			<div id="main" style="margin-left: 55%; height: 100px;">	
 				<!-- Intro -->
-				<section>
 						<div class="container">
 						
 							<!-- Plotly chart container -->
@@ -125,8 +151,7 @@
 								</script>
 							</div>
 						</div>	
-					</section>
-			</div>	
+			</div>
 		</div>	
 
 
