@@ -35,10 +35,13 @@ with app.app_context():
                       "material":"", 
                       "maintenance_history": vehicles.maintenance_history, 
                       "distance_traveled":vehicles.distance_traveled, 
-                      "mine_section":vehicles.mine_section.section_name,
-                      "coordinates":[vehicles.mine_section.latitude, vehicles.mine_section.longitude]}
+                      "mine_section":""}
         for i in vehicles.personnel:
             dictionary.update({"personnel":i.name})  
+        data.append(dictionary)
+
+        for i in vehicles.mine_section:
+            dictionary.update({"mine_section":i.section_name})  
         data.append(dictionary)
     print(data)
 
@@ -68,9 +71,3 @@ with app.app_context():
     #     data.append(dictionary)
 
     # print(data)
-
-# UPDATE vehicles  set mine_section_id=1  WHERE id = 1;
-# UPDATE vehicles  set mine_section_id=2  WHERE id = 2;
-# UPDATE vehicles  set mine_section_id=3  WHERE id = 3;
-# UPDATE vehicles  set mine_section_id=4  WHERE id = 4;
-# UPDATE vehicles  set mine_section_id=5  WHERE id = 5;

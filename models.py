@@ -23,6 +23,9 @@ class Personnel(db.Model):
     # Relationship with Vehicles
     vehicle_id = db.Column(db.Integer, db.ForeignKey('vehicles.id'))
     vehicle = db.relationship('Vehicles', back_populates='personnel')
+    mine_section_id = db.Column(db.Integer, db.ForeignKey('mine_sections.id'))
+    mine_section = db.relationship('MineSections', back_populates='personnel')
+
 
 class Equipment(db.Model):
     """Defines the table to conatin information about equipment
@@ -43,7 +46,11 @@ class Equipment(db.Model):
 
     # Relationship with Materials
     materials_id = db.Column(db.Integer, db.ForeignKey('materials.id'))
-    materials = db.relationship('Materials', back_populates='equipment')
+    materials = db.relationship('Materials', back_populates='equipment')            
+    mine_section_id = db.Column(db.Integer, db.ForeignKey('mine_sections.id'))
+    mine_section = db.relationship('MineSections', back_populates='equipment')
+
+
 
 class Vehicles(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -62,7 +69,9 @@ class Vehicles(db.Model):
     # Relationship with Materials
     materials_id = db.Column(db.Integer, db.ForeignKey('materials.id'))
     materials = db.relationship('Materials', back_populates='vehicles')
-
+    mine_section_id = db.Column(db.Integer, db.ForeignKey('mine_sections.id'))
+    mine_section = db.relationship('MineSections', back_populates='vehicles')
+    
 class Materials(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     material_id = db.Column(db.String(20), unique=True, nullable=False)
@@ -77,15 +86,19 @@ class Materials(db.Model):
 
     # Relationship with Vehicles
     vehicles = db.relationship('Vehicles', back_populates='materials')
-
-    # Relationship with MineSections
     mine_section_id = db.Column(db.Integer, db.ForeignKey('mine_sections.id'))
     mine_section = db.relationship('MineSections', back_populates='materials')
+
 
 class MineSections(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     section_name = db.Column(db.String(50), nullable=False)
     section_description = db.Column(db.String(255))
+    latitude = db.Column(db.Float)  # Add latitude column
+    longitude = db.Column(db.Float)  # Add longitude column
 
-    # Relationship with Materials
+    # Relationships
+    personnel = db.relationship('Personnel', back_populates='mine_section', lazy=True)
+    equipment = db.relationship('Equipment', back_populates='mine_section', lazy=True)
+    vehicles = db.relationship('Vehicles', back_populates='mine_section', lazy=True)
     materials = db.relationship('Materials', back_populates='mine_section')

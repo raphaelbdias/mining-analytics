@@ -56,6 +56,10 @@ def equipment():
             "personnel": ", ".join(personnel_names),
             "system": equipment.type_of_systems,
             "usage_statistics": equipment.usage_statistics,
+            "mine_section":equipment.mine_section.section_name,
+            "latitude":equipment.mine_section.latitude,
+            "longitude":equipment.mine_section.longitude,
+            "section_description":equipment.mine_section.section_description
         }
         data.append(dictionary)
 
@@ -109,12 +113,26 @@ def equipment():
     paper_bgcolor="#fff",
     plot_bgcolor="#fff"
     )
-
+    # fig_1.update_traces(marker=dict(colors=["#32cd32", "#fff000"]))
+    fig_1.update_traces(hoverinfo='label+percent', textfont_size=20,
+                  marker=dict(colors=["#32cd32", "#fff000"], line=dict(color='#000000', width=1)))
+    
+    fig_2 = go.Figure(data=go.Scattergeo(
+        lon = df['longitude'],
+        lat = df['latitude'],
+        text = df['section_description'],
+        mode = 'markers'))
+    
     # Convert the figure to JSON for rendering in HTML
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     graphJSON_1 = json.dumps(fig_1, cls=plotly.utils.PlotlyJSONEncoder)
+    graphJSON_2 = json.dumps(fig_2, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template("equipment.html", graphJSON=graphJSON, graphJSON_1=graphJSON_1, data=data)
+    return render_template("equipment.html", 
+                           graphJSON=graphJSON, 
+                           graphJSON_1=graphJSON_1, 
+                           graphJSON_2=graphJSON_2, 
+                           data=data)
 
 
 @app.route("/mine")
